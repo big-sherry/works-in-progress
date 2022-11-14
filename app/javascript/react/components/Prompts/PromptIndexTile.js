@@ -3,7 +3,7 @@ import React from "react";
 const PromptIndexTile = (props) => {
     const { prompt } = props
     return (
-        <div className="cell small-4 card prompt-tile">
+        <div className="cell small-3 card prompt-tile">
             <div className="card-divider">
                 <h1>{prompt.title}</h1>
             </div>
