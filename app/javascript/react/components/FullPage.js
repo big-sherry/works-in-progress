@@ -1,7 +1,11 @@
 import React from "react";
-import PromptsIndexContainer from "./Prompts/PromptsIndexContainer";
 
 const FullPage = (props) => {
+
+    const signIn = () => {
+        window.location.pathname = "/users/sign_up"
+        // sign_in
+    }
 
     return (
         <div className="grid-x full-page">
@@ -10,6 +14,9 @@ const FullPage = (props) => {
             </div>
             <div className="cell medium-4">
                 {props.user}
+                <div onClick={signIn}>
+                    <h1>Click me!</h1>
+                </div>
             </div>
         </div>
     )

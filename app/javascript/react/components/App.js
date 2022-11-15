@@ -12,7 +12,7 @@ const App = (props) => {
             page={<PromptsIndexContainer />}
             user={<h1>Wow</h1>}
           />}/>
-        <Route exact path='/prompts' component={PromptsIndexContainer} />
+        <Route exact path='/' component={PromptsIndexContainer} />
       </Switch>
     </BrowserRouter>
   )
