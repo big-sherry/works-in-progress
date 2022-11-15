@@ -10,3 +10,27 @@ prompt_3 = Prompt.find_or_create_by(
     title: 'Robo-Madness',
     body: 'Advancements in tech have brought about a new form of mania: Robo-Madness...'
 )
+prompt_4 = Prompt.find_or_create_by(
+    title: 'Lovely Time',
+    body: 'A pair of best friends realize they have feelings for one another...'
+)
+prompt_5 = Prompt.find_or_create_by(
+    title: 'Look at This',
+    body: 'A family that moves into an old house finds something hidden under the floorboards...'
+)
+prompt_6 = Prompt.find_or_create_by(
+    title: 'Me Too',
+    body: 'To children talk about their favorite treats...'
+)
+prompt_7 = Prompt.find_or_create_by(
+    title: 'Ghoulish Beast',
+    body: 'A monster attacks a small village at the edge of a forest...'
+)
+prompt_8 = Prompt.find_or_create_by(
+    title: 'One Last Time',
+    body: 'An elderly man enjoys one of his childhood hobbies...'
+)
+prompt_9 = Prompt.find_or_create_by(
+    title: 'The End',
+    body: 'A man finishes telling a story, leaving the audience terrified...'
+)
