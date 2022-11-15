@@ -34,7 +34,7 @@ const PromptsIndexContainer = (props) => {
         })
     
     return (
-        <div className="grid-x">
+        <div className="container">
             {promptsIndex}
         </div>
     )
