@@ -16,16 +16,5 @@
 }
 
 .item {
-    flex-basis: 15rem;
-}
-
-.card {
-    height: 15rem;
-    border-style: solid;
-    border-color: rgb(197, 197, 197);
-}
-
-.card:hover {
-    box-shadow: 0px 2px 8px 2px rgb(159, 159, 159);
-    transition: box-shadow 0.2s ease-in-out;
+    flex-basis: 18rem;
 }

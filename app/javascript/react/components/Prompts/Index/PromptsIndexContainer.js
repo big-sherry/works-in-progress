@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import PromptIndexTile from "./PromptIndexTile";
+import React, { useState, useEffect } from 'react';
+import PromptIndexTile from './PromptIndexTile';
 
 const PromptsIndexContainer = (props) => {
 
@@ -7,7 +7,7 @@ const PromptsIndexContainer = (props) => {
 
     const getPrompts = async () => {
         try {
-            const response = await fetch("api/v1/prompts")
+            const response = await fetch('api/v1/prompts')
             if (!response.ok) {
                 const errorMessage = `${response.status} (${response.statusText})`
                 const error = new Error(errorMessage)
@@ -34,7 +34,7 @@ const PromptsIndexContainer = (props) => {
         })
     
     return (
-        <div className="container">
+        <div className='container'>
             {promptsIndex}
         </div>
     )
