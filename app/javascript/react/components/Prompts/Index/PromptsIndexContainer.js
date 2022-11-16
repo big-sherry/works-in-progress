@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PromptIndexTile from './PromptIndexTile';
 
 const PromptsIndexContainer = (props) => {
-
     const [prompts, setPrompts] = useState([])
 
     const getPrompts = async () => {
@@ -34,7 +33,7 @@ const PromptsIndexContainer = (props) => {
         })
     
     return (
-        <div className='container'>
+        <div className='prompt-index-container'>
             {promptsIndex}
         </div>
     )

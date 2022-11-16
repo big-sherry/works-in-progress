@@ -1,18 +1,18 @@
-user_1 = User.create{
+user_1 = User.create(
     email: 'email1@email.com',
     username: 'user1',
     password: 'password'
-}
-user_2 = User.create{
+)
+user_2 = User.create(
     email: 'email2@email.com',
     username: 'user2',
     password: 'password'
-}
-user_3 = User.create{
-    email: 'email4@email.com',
+)
+user_3 = User.create(
+    email: 'email3@email.com',
     username: 'user3',
     password: 'password'
-}
+)
 
 prompt_1 = Prompt.find_or_create_by(
     title: 'The Haunted House',
@@ -52,14 +52,12 @@ prompt_9 = Prompt.find_or_create_by(
 )
 
 response_1 = Response.find_or_create_by(
-    title: "Old Man Brimble's House",
-    body: "The last time anyone set foot in that house was a few weeks after Old Man Brimble died and his grandkids had to clear out his belongings. I remember them saying they needed to leave quickly because they heard a scary voice coming from a dark corner in the attic."
+    body: "The last time anyone set foot in that house was a few weeks after Old Man Brimble died and his grandkids had to clear out his belongings. I remember them saying they needed to leave quickly because they heard a scary voice coming from a dark corner in the attic.",
     user: user_1,
     prompt: prompt_1
 )
 response_2 = Response.find_or_create_by(
-    title: "I'm Scared!",
-    body: "\'Get me the hell out of here!\' Jon was terrified of the darkness in the basement of the old house."
+    body: "\'Get me the hell out of here!\' Jon was terrified of the darkness in the basement of the old house.",
     user: user_2,
     prompt: prompt_1
 )

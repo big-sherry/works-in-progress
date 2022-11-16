@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PromptShowTile from "./PromptShowTile";
+import ResponsesIndexContainer from "../../Responses/ResponsesIndexContainer";
 
 const PromptShowContainer = (props) => {
     const [prompt, setPrompt] = useState({
@@ -34,6 +35,9 @@ const PromptShowContainer = (props) => {
         <div className="prompt-show-container">
             <PromptShowTile
                 prompt={prompt}
+            />
+            <ResponsesIndexContainer
+                responses={prompt.responses}
             />
         </div>
     )

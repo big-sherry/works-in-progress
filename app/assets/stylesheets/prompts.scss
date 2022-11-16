@@ -1,9 +1,20 @@
+.prompt-index-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
 .prompt-tile {
+    flex-basis: 14rem;
     .card {
         border-radius: 5px;
-        height: 15rem;
         border-style: solid;
         border-color: rgb(197, 197, 197);
+        height: 15rem;
+        margin: 5px;
+    }
+    .card-divider {
+        max-height: min-content;
+
     }
     .card:hover {
         box-shadow: 0px 2px 8px 2px rgb(159, 159, 159);
@@ -12,10 +23,17 @@
     h1 {
         font-size: 2.85vh;
     }
-    margin: 6px;
+    p {
+        font-size: 16px;
+    }
 }
 
-.prompt-show {
+.prompt-show-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.prompt-show-tile {
     .card {
         border-radius: 5px;
         height: 18rem;
@@ -29,3 +47,4 @@
         font-size: 2rem;
     }
 }
+
