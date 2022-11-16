@@ -4,16 +4,14 @@ const ResponseIndexTile = (props) => {
     const { response } = props
     return (
         <div className="response-tile">
-            <div className="card">
-                <div className="card-section">
-                    <h5>
-                        {response.user.username}
-                    </h5>
-                    <p>
-                        {response.body}
-                    </p>
-                </div>
+            <div className="response-tile-user">
+                <h5>
+                    @{response.user.username}
+                </h5>
             </div>
+            <p>
+                {response.body}
+            </p>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import PromptIndexTile from './PromptIndexTile';
 
 const PromptsIndexContainer = (props) => {
     const [prompts, setPrompts] = useState([])
-    
+
     const getPrompts = async () => {
         try {
             const response = await fetch('api/v1/prompts')
@@ -33,7 +33,7 @@ const PromptsIndexContainer = (props) => {
         })
     
     return (
-        <div className='container'>
+        <div className='prompt-index-container'>
             {promptsIndex}
         </div>
     )

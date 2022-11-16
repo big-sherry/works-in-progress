@@ -1,16 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PromptIndexTile = (props) => {
     const { prompt } = props
     return (
-        <div className="item prompt-tile">
+        <div className='prompt-tile'>
             <Link to={`/prompts/${prompt.id}`} >
-                <div className="card">
-                    <div className="card-divider">
+                <div className='card'>
+                    <div className='card-divider'>
                         <h1>{prompt.title}</h1>
                     </div>
-                    <div className="card-section prompt-body">
+                    <div className='card-section'>
                         <p>{prompt.body}</p>
                     </div>
                 </div>

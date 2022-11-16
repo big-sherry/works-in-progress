@@ -12,8 +12,10 @@ const ResponsesIndexContainer = (props) => {
     })
 
     return (
-        <div className="response-index">
-            {responseIndex}
+        <div className="prompt-show-item">
+            <div className="response-index-container">
+                {responseIndex}
+            </div>
         </div>
     )
 }
