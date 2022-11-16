@@ -17,7 +17,10 @@ const PromptShowContainer = (props) => {
                 throw(error)
             }
             const fetchedPrompt = await response.json()
-            setPrompt(fetchedPrompt.prompt)
+            setPrompt({
+                ...fetchedPrompt.prompt,
+                responses: [...fetchedPrompt.prompt.responses]
+            })
         } catch(err) {
             console.error(`Error in fetch: ${err.message}`)
         }
