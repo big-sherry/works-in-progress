@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2022_11_11_175809) do
   end
 
   create_table "responses", force: :cascade do |t|
-    t.string "title"
     t.text "body", null: false
     t.bigint "user_id", null: false
     t.bigint "prompt_id", null: false
