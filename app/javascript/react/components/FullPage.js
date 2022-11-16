@@ -4,7 +4,7 @@ const FullPage = (props) => {
 
     const signIn = () => {
         window.location.pathname = "/users/sign_up"
-        // sign_in
+        // sign_in/user tile
     }
 
     return (

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PromptIndexTile from './PromptIndexTile';
 
 const PromptsIndexContainer = (props) => {
-
     const [prompts, setPrompts] = useState([])
-
+    
     const getPrompts = async () => {
         try {
             const response = await fetch('api/v1/prompts')
