@@ -6,7 +6,7 @@
 
       <div class="sign-up-field">
         <%= f.label :username %><br />
-        <%= f.email_field :username, autofocus: true, autocomplete: "username" %>
+        <%= f.text_field :username, autofocus: true, autocomplete: "username"  %>
       </div>
 
       <div class="sign-up-field">
@@ -34,4 +34,4 @@
   </div>
 </div>
 
-  <%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %>
