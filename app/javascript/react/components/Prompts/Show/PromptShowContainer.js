@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PromptShowTile from "./PromptShowTile";
-import ResponsesIndexContainer from "../../Responses/ResponsesIndexContainer";
+import ResponsesIndexContainer from "../../Responses/Index/ResponsesIndexContainer";
 
 const PromptShowContainer = (props) => {
     const [prompt, setPrompt] = useState({

@@ -57,7 +57,7 @@ response_1 = Response.find_or_create_by(
     prompt: prompt_1
 )
 response_2 = Response.find_or_create_by(
-    body: "\'Get me the hell out of here!\' Jon was terrified of the darkness in the basement of the old house.",
+    body: "\"Get me the hell out of here!\" Jon was terrified of the darkness in the basement of the old house.",
     user: user_2,
     prompt: prompt_1
 )

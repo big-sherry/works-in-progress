@@ -3,8 +3,8 @@
     flex-flow: row wrap;
 }
 
-.prompt-tile {
-    flex-basis: 14rem;
+.prompt-index-tile {
+    flex-basis: 15rem;
     .card {
         border-radius: 5px;
         border-style: solid;
@@ -21,10 +21,10 @@
         transition: box-shadow 0.2s ease-in-out;
     }
     h1 {
-        font-size: 2.85vh;
+        font-size: 20px;
     }
     p {
-        font-size: 16px;
+        font-size: 18px;
     }
 }
 
