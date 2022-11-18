@@ -3,7 +3,9 @@ import NewResponseForm from "./NewResponseForm";
 
 const NewResponseFormContainer = (props) => {
     return (
-        <NewResponseForm />
+        <NewResponseForm 
+            postResponse={props.postResponse}
+        />
     )
 }
 

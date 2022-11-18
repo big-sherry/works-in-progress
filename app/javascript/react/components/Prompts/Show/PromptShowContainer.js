@@ -5,21 +5,12 @@ import ResponsesIndexContainer from "../../Responses/Index/ResponsesIndexContain
 import NewResponseFormContainer from "../../Responses/New/NewResponseFormContainer";
 
 const PromptShowContainer = (props) => {
-    const [prompt, setPrompt] = useState({
-        responses: []
-    })
-
-    const [responseOption, setResponseOption] = useState("Responses")
-    const [responseOptionComp, setResponseOptionComp] = useState()
-    const responseOptionComps = {
-        "Responses":        <ResponsesIndexContainer
-                                responses={prompt.responses}
-                            />,
-        "Create Response":  <NewResponseFormContainer />
-    }
+    const [prompt, setPrompt] = useState({ responses: [] })
     const path = window.location.pathname
     const promptId = path[path.length - 1]
-
+    const [responseOption, setResponseOption] = useState("Responses")
+    const [responseOptionComp, setResponseOptionComp] = useState()
+    
     const getPrompt = async () => {
         try {
             const response = await fetch(`/api/v1/prompts/${promptId}`)
@@ -42,14 +33,55 @@ const PromptShowContainer = (props) => {
             console.error(`Error in fetch: ${err.message}`)
         }
     }
+    
+    const postResponse = async (formPayload) => {
+        try {
+            const response = await fetch(`/api/v1/prompts/${promptId}/responses`, {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formPayload)
+            })
+            if(!response.ok) {
+                const errorMessage = `${response.status} (${response.statusText})`
+                const error = new Error(errorMessage)
+                throw(error)
+            }
+            const postedResponse = await response.json()
+            if (postedResponse.response) {
+                setPrompt({
+                    ...prompt,
+                    responses: [...prompt.responses, postedResponse.response]
+                })
+                return true
+            } else {
+                setErrors(postedResponse.errors)
+                return false
+            }
+        } catch(err) {
+            console.error(`Error in fetch: ${err.message}`)
+        }
+    }
 
-    const optionClick = () => {
+    const responseOptionComps = {
+        "Responses":        <ResponsesIndexContainer
+                                responses={prompt.responses}
+                            />,
+        "Create Response":  <NewResponseFormContainer 
+                                postResponse={postResponse}
+                            />
+    }
+    
+    const optionClick = (event) => {
         if (event.target.textContent != responseOption) {
             setResponseOption(event.target.textContent)
             setResponseOptionComp(responseOptionComps[event.target.textContent])
         }
     }
-
+    
     useEffect(() => {
         getPrompt()
     }, [])
