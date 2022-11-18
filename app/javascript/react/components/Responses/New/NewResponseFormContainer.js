@@ -5,6 +5,7 @@ const NewResponseFormContainer = (props) => {
     return (
         <NewResponseForm 
             postResponse={props.postResponse}
+            setResponseOptionComp={props.setResponseOptionComp}
         />
     )
 }

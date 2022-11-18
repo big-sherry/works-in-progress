@@ -8,8 +8,18 @@ const PromptShowContainer = (props) => {
     const [prompt, setPrompt] = useState({ responses: [] })
     const path = window.location.pathname
     const promptId = path[path.length - 1]
+    const [errors, setErrors] = useState("")
     const [responseOption, setResponseOption] = useState("Responses")
     const [responseOptionComp, setResponseOptionComp] = useState()
+    const responseOptionComps = {
+        "Responses":        <ResponsesIndexContainer
+                                responses={prompt.responses}
+                            />,
+        "Create Response":  <NewResponseFormContainer 
+                                postResponse={postResponse}
+                                setResponseOptionComp={setResponseOptionComp}
+                            />
+    }
     
     const getPrompt = async () => {
         try {
@@ -56,6 +66,11 @@ const PromptShowContainer = (props) => {
                     ...prompt,
                     responses: [...prompt.responses, postedResponse.response]
                 })
+                setResponseOptionComp(
+                    <ResponsesIndexContainer
+                        responses={[...prompt.responses, postedResponse.response]}
+                    />
+                )
                 return true
             } else {
                 setErrors(postedResponse.errors)
@@ -66,14 +81,6 @@ const PromptShowContainer = (props) => {
         }
     }
 
-    const responseOptionComps = {
-        "Responses":        <ResponsesIndexContainer
-                                responses={prompt.responses}
-                            />,
-        "Create Response":  <NewResponseFormContainer 
-                                postResponse={postResponse}
-                            />
-    }
     
     const optionClick = (event) => {
         if (event.target.textContent != responseOption) {
@@ -96,6 +103,7 @@ const PromptShowContainer = (props) => {
                 optionClick={optionClick}
                 options={Object.keys(responseOptionComps)}
             />
+            {errors}
             {responseOptionComp}
         </div>
     )

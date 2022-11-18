@@ -3,11 +3,8 @@ import React, { useState } from "react";
 const NewResponseForm = (props) => {
     const [newResponse, setNewResponse] = useState({ body: "" })
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        console.log("hello")
-    }
-
+    
+    
     const handleFormChange = (event) => {
         const updatingField = event.currentTarget.name
         setNewResponse({
@@ -16,6 +13,27 @@ const NewResponseForm = (props) => {
         })
     }
 
+    const clearForm = () => {
+        setNewResponse({ body: "" })
+    }
+
+    const validateResponse = () => {
+        if (newResponse.body.trim === '') {
+            setNewResponse({ body: null })
+        }
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        const holdBody = newResponse.body
+        validateResponse()
+        if (props.postResponse(newResponse)) {
+            clearForm()
+        } else {
+            setNewResponse({ body: holdBody })
+        }
+    }
+    
     return (
         <form onSubmit={handleSubmit}>
             <div className="new-response">
