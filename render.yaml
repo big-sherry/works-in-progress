@@ -1,5 +1,3 @@
-the file.
-
 databases:
   - name: postgres
     ipAllowList: []
