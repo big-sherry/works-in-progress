@@ -31,3 +31,20 @@
         padding-left: 18px;
     }
 }
+
+.option-buttons-row {
+    display: flex;
+}
+
+.option-button {
+    flex-basis: auto;
+    margin-left: 20px;
+}
+
+.option-unselected {
+    background-color: green;
+}
+
+.option-selected {
+    background-color: pink;
+}
