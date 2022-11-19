@@ -1,3 +1,7 @@
+User.delete_all
+Prompt.delete_all
+Response.delete_all
+
 user_1 = User.create(
     email: 'email1@email.com',
     username: 'user1',
