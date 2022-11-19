@@ -6,6 +6,14 @@ const ResponsesIndexContainer = (props) => {
     const promptResponses = props.responses.reverse()
 
     const responseIndex = promptResponses.map((response) => {
+        let editResponseButton
+        let deleteResponseButton
+        if (props.user) {
+            response.user = props.user
+           // set edit button to a button
+           // set delete button to a button
+           // will these both need fetches? prob
+        }
         return (
             <ResponseIndexTile
                 key={response.id}

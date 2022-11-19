@@ -5,13 +5,14 @@ import ResponsesIndexContainer from "../../Responses/Index/ResponsesIndexContain
 import NewResponseFormContainer from "../../Responses/New/NewResponseFormContainer";
 
 const PromptShowContainer = (props) => {
+
     const [prompt, setPrompt] = useState({ responses: [] })
-    const path = window.location.pathname
-    const promptId = path[path.length - 1]
-    const [errors, setErrors] = useState("")
     const [responseOption, setResponseOption] = useState("Responses")
     const [responseOptionComp, setResponseOptionComp] = useState()
-    
+    const [errors, setErrors] = useState("")
+    const path = window.location.pathname
+    const promptId = path[path.length - 1]
+
     const getPrompt = async () => {
         try {
             const response = await fetch(`/api/v1/prompts/${promptId}`)
@@ -28,22 +29,22 @@ const PromptShowContainer = (props) => {
             setResponseOptionComp(
                 <ResponsesIndexContainer
                     responses={fetchedPrompt.prompt.responses}
-                    />
-                    )
-                } catch(err) {
-                    console.error(`Error in fetch: ${err.message}`)
-                }
-            }
-            
-            const postResponse = async (formPayload) => {
-                try {
-                    const response = await fetch(`/api/v1/prompts/${promptId}/responses`, {
-                        method: 'POST',
-                        credentials: 'same-origin',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
+                />
+            )
+        } catch(err) {
+            console.error(`Error in fetch: ${err.message}`)
+        }
+    }
+
+    const postResponse = async (formPayload) => {
+        try {
+            const response = await fetch(`/api/v1/prompts/${promptId}/responses`, {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
                 body: JSON.stringify(formPayload)
             })
             if(!response.ok) {
@@ -59,11 +60,11 @@ const PromptShowContainer = (props) => {
                 })
                 setResponseOptionComp(
                     <ResponsesIndexContainer
-                    responses={[...prompt.responses, postedResponse.response]}
+                        responses={[...prompt.responses, postedResponse.response]}
                     />
-                    )
-                    return true
-                } else {
+                )
+                return true
+            } else {
                 setErrors(postedResponse.errors)
                 return false
             }
@@ -71,7 +72,7 @@ const PromptShowContainer = (props) => {
             console.error(`Error in fetch: ${err.message}`)
         }
     }
-    
+
     const responseOptionComps = {
         "Responses":        <ResponsesIndexContainer
                                 responses={prompt.responses}
@@ -79,16 +80,20 @@ const PromptShowContainer = (props) => {
         "Create Response":  <NewResponseFormContainer 
                                 postResponse={postResponse}
                                 setResponseOptionComp={setResponseOptionComp}
+                            />,
+        "Your Responses":   <ResponsesIndexContainer 
+                                responses={props.user.responses}
+                                user={props.user}
                             />
     }
-    
+
     const optionClick = (event) => {
         if (event.target.textContent != responseOption) {
             setResponseOption(event.target.textContent)
             setResponseOptionComp(responseOptionComps[event.target.textContent])
         }
     }
-    
+
     useEffect(() => {
         getPrompt()
     }, [])
@@ -103,7 +108,9 @@ const PromptShowContainer = (props) => {
                 optionClick={optionClick}
                 options={Object.keys(responseOptionComps)}
             />
-            {errors}
+            <div className="response-errors">
+                {errors}
+            </div>
             {responseOptionComp}
         </div>
     )

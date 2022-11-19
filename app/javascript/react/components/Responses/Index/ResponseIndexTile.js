@@ -2,6 +2,7 @@ import React from "react";
 
 const ResponseIndexTile = (props) => {
     const { response } = props
+
     return (
         <div className="response-tile">
             <div className="response-tile-user">
@@ -9,10 +10,14 @@ const ResponseIndexTile = (props) => {
                     @{response.user.username}
                 </h5>
             </div>
+            <div className={`response-section ${response.section}`}>
+                {response.section}
+            </div>
             <p>
                 {response.body}
             </p>
             <div className="response-date">
+
             </div>
         </div>
     )

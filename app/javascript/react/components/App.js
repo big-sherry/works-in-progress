@@ -6,7 +6,7 @@ import FullPage from './FullPage'
 import UserTile from './Users/UserTile'
 
 const App = (props) => {
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState({ responses: [] })
 
   const getUser = async () => {
     try {
@@ -38,7 +38,7 @@ const App = (props) => {
         </Route>
         <Route exact path='/prompts/:promptId'>
           <FullPage
-            page={<PromptShowContainer />}
+            page={<PromptShowContainer user={currentUser} />}
             user={<UserTile user={currentUser} />}
           />
         </Route>

@@ -14,6 +14,6 @@ class Api::V1::ResponsesController < ApiController
 
     private
     def response_params
-        params.require(:response).permit(:body)
+        params.require(:response).permit(:body, :section)
     end
 end

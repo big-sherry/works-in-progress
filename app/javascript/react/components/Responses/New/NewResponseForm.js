@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 
 const NewResponseForm = (props) => {
-    const [newResponse, setNewResponse] = useState({ body: "" })
-
-    
+    const [newResponse, setNewResponse] = useState({ body: "", section: ""})
     
     const handleFormChange = (event) => {
         const updatingField = event.currentTarget.name
@@ -14,23 +12,27 @@ const NewResponseForm = (props) => {
     }
 
     const clearForm = () => {
-        setNewResponse({ body: "" })
+        setNewResponse({ body: "", section: "" })
     }
 
     const validateResponse = () => {
+        const responseSections = ["Beginning", "Middle", "End"]
+        if (!responseSections.includes(newResponse.section)) {
+            setNewResponse({ ...newResponse, section: null })
+        }
         if (newResponse.body.trim === '') {
-            setNewResponse({ body: null })
+            setNewResponse({ ...newResponse, body: null })
         }
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        const holdBody = newResponse.body
+        const holdResponse = { ...newResponse }
         validateResponse()
-        if (props.postResponse(newResponse)) {
+        if (!props.postResponse(newResponse)) {
             clearForm()
         } else {
-            setNewResponse({ body: holdBody })
+            setNewResponse({ ...holdResponse })
         }
     }
     
@@ -38,8 +40,8 @@ const NewResponseForm = (props) => {
         <form onSubmit={handleSubmit}>
             <div className="new-response">
                 <label>
-                    <div className="response-label">
-                        Your Response:
+                    <div className={`response-body-label ${newResponse.section}`}>
+                        Response:
                     </div>
                     <div className="new-response-textarea">
                         <textarea 
@@ -47,12 +49,29 @@ const NewResponseForm = (props) => {
                             id="body"
                             value={newResponse.body}
                             onChange={handleFormChange}
+                            rows={5}
                         />
                     </div>
                 </label>
-                <div className="submit-button">
-                    <input type="submit" value="Add Response"/>
+                <div className="response-section-select">
+                    <label>
+                        <div className={`response-section-label ${newResponse.section}`}>
+                            Section:
+                        </div>
+                        <select 
+                            name="section" 
+                            id="section" 
+                            onChange={handleFormChange}
+                            value={newResponse.section}
+                        >
+                            <option name="section" id="section" value="">Select</option>
+                            <option name="section" id="section" value="Beginning">Beginning</option>
+                            <option name="section" id="section" value="Middle">Middle</option>
+                            <option name="section" id="section" value="End">End</option>
+                        </select>
+                    </label>
                 </div>
+                <input className={`submit-button ${newResponse.section}`} type="submit" value="Add Response"/>
             </div>
         </form>
     )
