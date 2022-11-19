@@ -1,5 +1,5 @@
 class ResponseSerializer < ActiveModel::Serializer
-  attributes :id, :body
+  attributes :id, :body, :section, :created_at
 
   belongs_to :user
   belongs_to :prompt

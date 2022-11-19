@@ -5,12 +5,14 @@ import ResponsesIndexContainer from "../../Responses/Index/ResponsesIndexContain
 import NewResponseFormContainer from "../../Responses/New/NewResponseFormContainer";
 
 const PromptShowContainer = (props) => {
+
     const [prompt, setPrompt] = useState({ responses: [] })
-    const path = window.location.pathname
-    const promptId = path[path.length - 1]
     const [responseOption, setResponseOption] = useState("Responses")
     const [responseOptionComp, setResponseOptionComp] = useState()
-    
+    const [errors, setErrors] = useState("")
+    const path = window.location.pathname
+    const promptId = path[path.length - 1]
+
     const getPrompt = async () => {
         try {
             const response = await fetch(`/api/v1/prompts/${promptId}`)
@@ -33,7 +35,7 @@ const PromptShowContainer = (props) => {
             console.error(`Error in fetch: ${err.message}`)
         }
     }
-    
+
     const postResponse = async (formPayload) => {
         try {
             const response = await fetch(`/api/v1/prompts/${promptId}/responses`, {
@@ -56,6 +58,11 @@ const PromptShowContainer = (props) => {
                     ...prompt,
                     responses: [...prompt.responses, postedResponse.response]
                 })
+                setResponseOptionComp(
+                    <ResponsesIndexContainer
+                        responses={[...prompt.responses, postedResponse.response]}
+                    />
+                )
                 return true
             } else {
                 setErrors(postedResponse.errors)
@@ -72,16 +79,21 @@ const PromptShowContainer = (props) => {
                             />,
         "Create Response":  <NewResponseFormContainer 
                                 postResponse={postResponse}
+                                setResponseOptionComp={setResponseOptionComp}
+                            />,
+        "Your Responses":   <ResponsesIndexContainer 
+                                responses={props.user.responses}
+                                user={props.user}
                             />
     }
-    
+
     const optionClick = (event) => {
         if (event.target.textContent != responseOption) {
             setResponseOption(event.target.textContent)
             setResponseOptionComp(responseOptionComps[event.target.textContent])
         }
     }
-    
+
     useEffect(() => {
         getPrompt()
     }, [])
@@ -96,6 +108,9 @@ const PromptShowContainer = (props) => {
                 optionClick={optionClick}
                 options={Object.keys(responseOptionComps)}
             />
+            <div className="response-errors">
+                {errors}
+            </div>
             {responseOptionComp}
         </div>
     )

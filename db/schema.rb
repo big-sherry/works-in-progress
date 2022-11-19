@@ -18,12 +18,17 @@ ActiveRecord::Schema.define(version: 2022_11_11_175809) do
   create_table "prompts", force: :cascade do |t|
     t.string "title", null: false
     t.string "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "responses", force: :cascade do |t|
     t.text "body", null: false
+    t.string "section", null: false
     t.bigint "user_id", null: false
     t.bigint "prompt_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["prompt_id"], name: "index_responses_on_prompt_id"
     t.index ["user_id"], name: "index_responses_on_user_id"
   end
