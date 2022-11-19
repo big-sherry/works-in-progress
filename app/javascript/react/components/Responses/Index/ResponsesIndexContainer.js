@@ -2,7 +2,10 @@ import React from "react";
 import ResponseIndexTile from "./ResponseIndexTile";
 
 const ResponsesIndexContainer = (props) => {
-    const responseIndex = props.responses.map((response) => {
+
+    const promptResponses = props.responses.reverse()
+
+    const responseIndex = promptResponses.map((response) => {
         return (
             <ResponseIndexTile
                 key={response.id}

@@ -11,15 +11,6 @@ const PromptShowContainer = (props) => {
     const [errors, setErrors] = useState("")
     const [responseOption, setResponseOption] = useState("Responses")
     const [responseOptionComp, setResponseOptionComp] = useState()
-    const responseOptionComps = {
-        "Responses":        <ResponsesIndexContainer
-                                responses={prompt.responses}
-                            />,
-        "Create Response":  <NewResponseFormContainer 
-                                postResponse={postResponse}
-                                setResponseOptionComp={setResponseOptionComp}
-                            />
-    }
     
     const getPrompt = async () => {
         try {
@@ -37,22 +28,22 @@ const PromptShowContainer = (props) => {
             setResponseOptionComp(
                 <ResponsesIndexContainer
                     responses={fetchedPrompt.prompt.responses}
-                />
-            )
-        } catch(err) {
-            console.error(`Error in fetch: ${err.message}`)
-        }
-    }
-    
-    const postResponse = async (formPayload) => {
-        try {
-            const response = await fetch(`/api/v1/prompts/${promptId}/responses`, {
-                method: 'POST',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
+                    />
+                    )
+                } catch(err) {
+                    console.error(`Error in fetch: ${err.message}`)
+                }
+            }
+            
+            const postResponse = async (formPayload) => {
+                try {
+                    const response = await fetch(`/api/v1/prompts/${promptId}/responses`, {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
                 body: JSON.stringify(formPayload)
             })
             if(!response.ok) {
@@ -68,11 +59,11 @@ const PromptShowContainer = (props) => {
                 })
                 setResponseOptionComp(
                     <ResponsesIndexContainer
-                        responses={[...prompt.responses, postedResponse.response]}
+                    responses={[...prompt.responses, postedResponse.response]}
                     />
-                )
-                return true
-            } else {
+                    )
+                    return true
+                } else {
                 setErrors(postedResponse.errors)
                 return false
             }
@@ -80,7 +71,16 @@ const PromptShowContainer = (props) => {
             console.error(`Error in fetch: ${err.message}`)
         }
     }
-
+    
+    const responseOptionComps = {
+        "Responses":        <ResponsesIndexContainer
+                                responses={prompt.responses}
+                            />,
+        "Create Response":  <NewResponseFormContainer 
+                                postResponse={postResponse}
+                                setResponseOptionComp={setResponseOptionComp}
+                            />
+    }
     
     const optionClick = (event) => {
         if (event.target.textContent != responseOption) {

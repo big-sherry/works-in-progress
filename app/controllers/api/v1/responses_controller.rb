@@ -4,8 +4,8 @@ class Api::V1::ResponsesController < ApiController
         prompt = Prompt.find(params[:prompt_id])
         response.prompt = prompt
         response.user = current_user
-
-        if new_response.save
+        
+        if response.save
             render json: response
         else 
             render json: { errors: response.errors.full_messages.to_sentence }
@@ -14,6 +14,6 @@ class Api::V1::ResponsesController < ApiController
 
     private
     def response_params
-        params.require(:review).permit(:rating, :body)
+        params.require(:response).permit(:body)
     end
 end
