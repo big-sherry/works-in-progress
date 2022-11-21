@@ -5,14 +5,15 @@ import ResponsesIndexContainer from "../../Responses/Index/ResponsesIndexContain
 import NewResponseFormContainer from "../../Responses/New/NewResponseFormContainer";
 
 const PromptShowContainer = (props) => {
-
+    
     const [prompt, setPrompt] = useState({ responses: [] })
     const [responseOption, setResponseOption] = useState("Responses")
     const [responseOptionComp, setResponseOptionComp] = useState()
     const [errors, setErrors] = useState("")
     const path = window.location.pathname
     const promptId = path[path.length - 1]
-
+    
+    
     const getPrompt = async () => {
         try {
             const response = await fetch(`/api/v1/prompts/${promptId}`)
@@ -28,14 +29,14 @@ const PromptShowContainer = (props) => {
             })
             setResponseOptionComp(
                 <ResponsesIndexContainer
-                    responses={fetchedPrompt.prompt.responses}
+                responses={fetchedPrompt.prompt.responses}
                 />
-            )
-        } catch(err) {
-            console.error(`Error in fetch: ${err.message}`)
+                )
+            } catch(err) {
+                console.error(`Error in fetch: ${err.message}`)
+            }
         }
-    }
-
+        
     const postResponse = async (formPayload) => {
         try {
             const response = await fetch(`/api/v1/prompts/${promptId}/responses`, {
@@ -60,7 +61,7 @@ const PromptShowContainer = (props) => {
                 })
                 setResponseOptionComp(
                     <ResponsesIndexContainer
-                        responses={[...prompt.responses, postedResponse.response]}
+                    responses={[...prompt.responses, postedResponse.response]}
                     />
                 )
                 return true
@@ -72,14 +73,13 @@ const PromptShowContainer = (props) => {
             console.error(`Error in fetch: ${err.message}`)
         }
     }
-
+            
     let responseOptionComps = {
-        "Responses":        <ResponsesIndexContainer
-                                    responses={prompt.responses}
-                                    signUpMessage={true}
-                            />
+        "Responses":    <ResponsesIndexContainer
+                            responses={prompt.responses}
+                        />
     }
-
+        
     if (props.user) {
         responseOptionComps = {
             "Responses":        <ResponsesIndexContainer
@@ -103,6 +103,13 @@ const PromptShowContainer = (props) => {
         }
     }
 
+    let loginMessage = ""
+    if (!props.user) {
+        loginMessage =  <div className="login-message">
+                            Log in or sign up to create your own responses!
+                        </div>
+    }
+
     useEffect(() => {
         getPrompt()
     }, [])
@@ -117,6 +124,7 @@ const PromptShowContainer = (props) => {
                 optionClick={optionClick}
                 options={Object.keys(responseOptionComps)}
             />
+            {loginMessage}
             <div className="response-errors">
                 {errors}
             </div>
