@@ -7,8 +7,10 @@ const UserTile = (props) => {
         return (
             <div className="user-tile">
                 <h1>
-                    3@{user.username}
+                    @{user.username}
                 </h1>
+                <div className="user-profile-pic">
+                </div>
             </div>
         )
     } else {

@@ -3,6 +3,9 @@ import ResponseIndexTile from "./ResponseIndexTile";
 
 const ResponsesIndexContainer = (props) => {
 
+    let loginMessage = ""
+    if (props.user) 
+
     const promptResponses = props.responses.reverse()
 
     const responseIndex = promptResponses.map((response) => {

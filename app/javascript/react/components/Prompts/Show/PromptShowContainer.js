@@ -73,18 +73,27 @@ const PromptShowContainer = (props) => {
         }
     }
 
-    const responseOptionComps = {
+    let responseOptionComps = {
         "Responses":        <ResponsesIndexContainer
-                                responses={prompt.responses}
-                            />,
-        "Create Response":  <NewResponseFormContainer 
-                                postResponse={postResponse}
-                                setResponseOptionComp={setResponseOptionComp}
-                            />,
-        "Your Responses":   <ResponsesIndexContainer 
-                                responses={props.user.responses}
-                                user={props.user}
+                                    responses={prompt.responses}
+                                    signUpMessage={true}
                             />
+    }
+
+    if (props.user) {
+        responseOptionComps = {
+            "Responses":        <ResponsesIndexContainer
+                                    responses={prompt.responses}
+                                />,
+            "Create Response":  <NewResponseFormContainer 
+                                    postResponse={postResponse}
+                                    setResponseOptionComp={setResponseOptionComp}
+                                />,
+            "Your Responses":   <ResponsesIndexContainer 
+                                    responses={props.user.responses}
+                                    user={props.user}
+                                />
+        }
     }
 
     const optionClick = (event) => {
