@@ -33,7 +33,7 @@ const PromptsIndexContainer = (props) => {
         })
     
     return (
-        <div className='prompt-index-container'>
+        <div className='prompt-index-container grid-x grid-margin-x'>
             {promptsIndex}
         </div>
     )
