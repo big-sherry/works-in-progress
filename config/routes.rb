@@ -8,8 +8,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :prompts, only: [:index, :show]
+      resources :prompts, only: [:index, :show] do
+        resources :responses, only: [:create, :update]
+      end
       resources :users, only: [:index]
+      resources :responses, only: [:destroy]
     end
   end
 end

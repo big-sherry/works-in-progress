@@ -6,11 +6,11 @@ import FullPage from './FullPage'
 import UserTile from './Users/UserTile'
 
 const App = (props) => {
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState({ responses: [] })
 
   const getUser = async () => {
     try {
-      const response = await fetch('api/v1/users')
+      const response = await fetch('/api/v1/users')
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
@@ -38,7 +38,7 @@ const App = (props) => {
         </Route>
         <Route exact path='/prompts/:promptId'>
           <FullPage
-            page={<PromptShowContainer />}
+            page={<PromptShowContainer user={currentUser} />}
             user={<UserTile user={currentUser} />}
           />
         </Route>

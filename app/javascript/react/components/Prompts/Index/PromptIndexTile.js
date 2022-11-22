@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const PromptIndexTile = (props) => {
     const { prompt } = props
     return (
-        <div className='prompt-index-tile'>
+        <div className='prompt-index-tile cell small-4'>
             <Link to={`/prompts/${prompt.id}`} >
                 <div className='card'>
                     <div className='card-divider'>

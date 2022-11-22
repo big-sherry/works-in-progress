@@ -1,22 +1,29 @@
+User.delete_all
+Prompt.delete_all
+Response.delete_all
+
 user_1 = User.create(
     email: 'email1@email.com',
     username: 'user1',
-    password: 'password'
+    password: 'password',
+    profile_pic: '/app/assets/images/bc75882d906b263fbe0550fe59dc7b21.jpeg'
 )
 user_2 = User.create(
     email: 'email2@email.com',
     username: 'user2',
-    password: 'password'
+    password: 'password',
+    profile_pic: '/app/assets/images/bc75882d906b263fbe0550fe59dc7b21.jpeg'
 )
 user_3 = User.create(
     email: 'email3@email.com',
     username: 'user3',
-    password: 'password'
+    password: 'password',
+    profile_pic: '/app/assets/images/bc75882d906b263fbe0550fe59dc7b21.jpeg'
 )
 
 prompt_1 = Prompt.find_or_create_by(
     title: 'The Haunted House',
-    body: 'A child stuck in a dark room of a haunted house...'
+    body: 'A child is stuck in a dark room of a haunted house...'
 )
 prompt_2 = Prompt.find_or_create_by(
     title: 'A Long Day',
@@ -53,11 +60,19 @@ prompt_9 = Prompt.find_or_create_by(
 
 response_1 = Response.find_or_create_by(
     body: "The last time anyone set foot in that house was a few weeks after Old Man Brimble died and his grandkids had to clear out his belongings. I remember them saying they needed to leave quickly because they heard a scary voice coming from a dark corner in the attic.",
+    section: "Beginning",
     user: user_1,
     prompt: prompt_1
 )
 response_2 = Response.find_or_create_by(
     body: "\"Get me the hell out of here!\" Jon was terrified of the darkness in the basement of the old house.",
+    section: "Middle",
     user: user_2,
     prompt: prompt_1
+)
+response_3 = Response.find_or_create_by(
+    body: "Mike came back from the auction house with half a million dollars! Everyone was surprised that the old painting had cost so much. Auntie Paulette said, \"So, who gets a cut?\" They all laughed into their night of celebration.",
+    section: "End",
+    user: user_2,
+    prompt: prompt_5
 )

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
-const NewResponseForm = (props) => {
-    const [newResponse, setNewResponse] = useState({ body: "", section: ""})
-    
+const EditResponseForm = (props) => {
+    const [newResponse, setNewResponse] = useState({ 
+        body: props.response.body, 
+        section: props.response.section 
+    })
+
     const handleFormChange = (event) => {
         const updatingField = event.currentTarget.name
         setNewResponse({
@@ -29,7 +32,7 @@ const NewResponseForm = (props) => {
         event.preventDefault()
         const holdResponse = { ...newResponse }
         validateResponse()
-        if (!props.postResponse(newResponse)) {
+        if (!props.updateResponse(newResponse, props.response.id)) {
             clearForm()
         } else {
             setNewResponse({ ...holdResponse })
@@ -77,4 +80,4 @@ const NewResponseForm = (props) => {
     )
 }
 
-export default NewResponseForm
+export default EditResponseForm
