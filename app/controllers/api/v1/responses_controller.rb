@@ -1,4 +1,5 @@
 class Api::V1::ResponsesController < ApiController
+    
     def create
         response = Response.new(response_params)
         prompt = Prompt.find(params[:prompt_id])
@@ -9,6 +10,20 @@ class Api::V1::ResponsesController < ApiController
             render json: response
         else 
             render json: { errors: response.errors.full_messages.to_sentence }
+        end
+    end
+
+    def destroy
+        Response.destroy(params[:id])
+        render json: { deletedMessage: "Response has been deleted."}
+    end
+    
+    def update
+        response = Response.find(params[:id])
+        if (response.update_attributes(response_params))
+            render json: response
+        else
+            render json: { errors: response.errors.full_messages.to_sentence}
         end
     end
 

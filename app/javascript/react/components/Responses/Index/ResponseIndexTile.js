@@ -19,6 +19,10 @@ const ResponseIndexTile = (props) => {
             <div className="response-date">
 
             </div>
+            <div className="edit-delete-buttons">
+                {props.editResponseButton}
+                {props.deleteResponseButton}
+            </div>
         </div>
     )
 }

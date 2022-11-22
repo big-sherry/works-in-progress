@@ -3,6 +3,7 @@ import PromptShowTile from "./PromptShowTile";
 import ResponseOptionButtons from "../../Responses/Options/ResponseOptionButtons";
 import ResponsesIndexContainer from "../../Responses/Index/ResponsesIndexContainer";
 import NewResponseFormContainer from "../../Responses/New/NewResponseFormContainer";
+import { get } from "fetch-mock";
 
 const PromptShowContainer = (props) => {
     
@@ -11,8 +12,8 @@ const PromptShowContainer = (props) => {
     const [responseOptionComp, setResponseOptionComp] = useState()
     const [errors, setErrors] = useState("")
     const path = window.location.pathname
-    const promptId = path[path.length - 1]
-    
+    const pathArray= path.split("/")
+    const promptId = pathArray[pathArray.length - 1]
     
     const getPrompt = async () => {
         try {
@@ -55,20 +56,63 @@ const PromptShowContainer = (props) => {
             }
             const postedResponse = await response.json()
             if (postedResponse.response) {
-                setPrompt({
-                    ...prompt,
-                    responses: [...prompt.responses, postedResponse.response]
-                })
-                setResponseOptionComp(
-                    <ResponsesIndexContainer
-                    responses={[...prompt.responses, postedResponse.response]}
-                    />
-                )
+                window.location.reload()
                 return true
             } else {
                 setErrors(postedResponse.errors)
                 return false
             }
+        } catch(err) {
+            console.error(`Error in fetch: ${err.message}`)
+        }
+    }
+
+    const updateResponse = async (formPayload, responseId) => {
+        try {
+            const response = await fetch(`/api/v1/prompts/${promptId}/responses/${responseId}`, {
+                method: 'PUT',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formPayload)
+            })
+            if(!response.ok) {
+                const errorMessage = `${response.status} (${response.statusText})`
+                const error = new Error(errorMessage)
+                throw(error)
+            }
+            const updatedResponse = await response.json()
+            if (updatedResponse.response) {
+                window.location.reload()
+                return true
+            } else {
+                setErrors(updatedResponse.errors)
+                return false
+            }
+        } catch(err) {
+            console.error(`Error in fetch: ${err.message}`)
+        }
+    }
+
+    const deleteResponse = async (responseId) => {
+        try {
+            const response = await fetch(`/api/v1/responses/${responseId}`, {
+                method: 'DELETE',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(responseId)
+            })
+            if(!response.ok) {
+                const errorMessage = `${response.status} (${response.statusText})`
+                const error = new Error(errorMessage)
+                throw(error)
+            }
+            window.location.reload()
         } catch(err) {
             console.error(`Error in fetch: ${err.message}`)
         }
@@ -92,6 +136,10 @@ const PromptShowContainer = (props) => {
             "Your Responses":   <ResponsesIndexContainer 
                                     responses={props.user.responses}
                                     user={props.user}
+                                    deleteResponse={deleteResponse}
+                                    updateResponse={updateResponse}
+                                    setResponseOptionComp={setResponseOptionComp}
+                                    setResponseOption={setResponseOption}
                                 />
         }
     }

@@ -5,17 +5,20 @@ Response.delete_all
 user_1 = User.create(
     email: 'email1@email.com',
     username: 'user1',
-    password: 'password'
+    password: 'password',
+    profile_pic: '/app/assets/images/bc75882d906b263fbe0550fe59dc7b21.jpeg'
 )
 user_2 = User.create(
     email: 'email2@email.com',
     username: 'user2',
-    password: 'password'
+    password: 'password',
+    profile_pic: '/app/assets/images/bc75882d906b263fbe0550fe59dc7b21.jpeg'
 )
 user_3 = User.create(
     email: 'email3@email.com',
     username: 'user3',
-    password: 'password'
+    password: 'password',
+    profile_pic: '/app/assets/images/bc75882d906b263fbe0550fe59dc7b21.jpeg'
 )
 
 prompt_1 = Prompt.find_or_create_by(
