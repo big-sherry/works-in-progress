@@ -3,7 +3,6 @@ import PromptShowTile from "./PromptShowTile";
 import ResponseOptionButtons from "../../Responses/Options/ResponseOptionButtons";
 import ResponsesIndexContainer from "../../Responses/Index/ResponsesIndexContainer";
 import NewResponseFormContainer from "../../Responses/New/NewResponseFormContainer";
-import { get } from "fetch-mock";
 
 const PromptShowContainer = (props) => {
     
