@@ -8,7 +8,7 @@ CarrierWave.configure do |config|
         if Rails.env.production?
             config.fog_directory  = ENV["PRODUCTION_S3_BUCKET"]
         else
-            config.fog_directory  = ENV["DEVELOPMENT_S3_BUCKET"]
+            config.fog_directory  = ENV["PRODUCTION_S3_BUCKET"]
         end
     end
 end
