@@ -1,10 +1,4 @@
-.prompt-index-container {
-    // display: flex;
-    // flex-flow: row wrap;
-}
-
 .prompt-index-tile {
-    // flex-basis: 15rem;
     .card {
         border-radius: 5px;
         border-style: solid;
@@ -38,6 +32,7 @@
         border-radius: 5px;
         height: 18rem;
         margin: 1rem;
+        margin-top: 5px;
         box-shadow: 0px 2px 8px 2px rgb(159, 159, 159);
     }
     h1 {

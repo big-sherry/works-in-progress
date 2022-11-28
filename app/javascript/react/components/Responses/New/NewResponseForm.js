@@ -53,6 +53,9 @@ const NewResponseForm = (props) => {
                         />
                     </div>
                 </label>
+                <div className="response-char-count">
+                    <p>{newResponse.body.length}/500</p>
+                </div>
                 <div className="response-section-select">
                     <label>
                         <div className={`response-section-label ${newResponse.section}`}>

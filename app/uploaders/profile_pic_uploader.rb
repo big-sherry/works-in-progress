@@ -13,17 +13,16 @@ class ProfilePicUploader < CarrierWave::Uploader::Base
   #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   # end
 
-  # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url(*args)
-  #   # For Rails 3.1+ asset pipeline compatibility:
-  #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  #
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
+  # Provide a default URL as a default if there hasnt been a file uploaded:
+  def default_url(*args)
+    # For Rails 3.1+ asset pipeline compatibility:
+    # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+    "https://works-in-progress-production.s3.amazonaws.com/uploads/2a406bf58db22cc7818ad1ff48c158cf.jpeg"
+  end
 
   # Process files as they are uploaded:
   # process scale: [200, 300]
-  #
+  
   # def scale(width, height)
   #   # do something
   # end
