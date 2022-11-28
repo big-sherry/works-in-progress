@@ -3,7 +3,7 @@
     flex-flow: row wrap;
 }
 .response-tile {
-    flex-basis: 35rem;
+    width: 100%;
     border-radius: 5px;
     border-style: solid;
     border-color: rgb(197, 197, 197);
@@ -51,4 +51,16 @@
 
 .End {
     background-color: rgb(16, 46, 182);
+}
+
+.response-errors {
+    margin-left: 20px;
+    margin-top: 10px;
+    border-style: solid;
+    border-color: rgb(183, 0, 0);
+    border-radius: 3px;
+    background-color: rgb(212, 120, 135);
+    color: rgb(183, 0, 0);
+    max-width: max-content;
+    padding: 5px;
 }

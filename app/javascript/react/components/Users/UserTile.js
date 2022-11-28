@@ -5,11 +5,14 @@ const UserTile = (props) => {
 
     if (user) {
         return (
-            <div className="user-tile">
-                <h1>
-                    @{user.username}
-                </h1>
+            <div className="user-tile cell medium-12">
                 <div className="user-profile-pic">
+                    <img src={user.profile_pic?.url} />
+                </div>
+                <div className="user-tile-username">
+                    <h1>
+                        @{user.username}
+                    </h1>
                 </div>
             </div>
         )

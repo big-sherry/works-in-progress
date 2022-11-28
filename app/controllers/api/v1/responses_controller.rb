@@ -24,7 +24,7 @@ class Api::V1::ResponsesController < ApiController
             render json: response
         else
             render json: { errors: response.errors.full_messages.to_sentence}
-        end
+        end 
     end
 
     private

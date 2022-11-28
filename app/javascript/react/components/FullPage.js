@@ -12,7 +12,7 @@ const FullPage = (props) => {
             <div className="cell medium-8">
                 {props.page}
             </div>
-            <div className="cell medium-4">
+            <div className="cell medium-4 grid-x">
                 {props.user}
                 <div onClick={signIn}>
                     <h1>Click me!</h1>

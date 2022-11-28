@@ -10,6 +10,10 @@ const PromptShowContainer = (props) => {
     const [responseOption, setResponseOption] = useState("Responses")
     const [responseOptionComp, setResponseOptionComp] = useState()
     const [errors, setErrors] = useState("")
+    let responseErrors = ""
+    if (errors != "") {
+        responseErrors = "response-errors"
+    }
     const path = window.location.pathname
     const pathArray= path.split("/")
     const promptId = pathArray[pathArray.length - 1]
@@ -172,7 +176,7 @@ const PromptShowContainer = (props) => {
                 options={Object.keys(responseOptionComps)}
             />
             {loginMessage}
-            <div className="response-errors">
+            <div className={responseErrors}>
                 {errors}
             </div>
             {responseOptionComp}

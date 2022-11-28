@@ -28,22 +28,25 @@ const App = (props) => {
   }, [])
 
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path='/'>
-          <FullPage 
-            page={<PromptsIndexContainer />}
-            user={<UserTile user={currentUser} />}
-          />
-        </Route>
-        <Route exact path='/prompts/:promptId'>
-          <FullPage
-            page={<PromptShowContainer user={currentUser} />}
-            user={<UserTile user={currentUser} />}
-          />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <div className="application">
+      
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/'>
+            <FullPage 
+              page={<PromptsIndexContainer />}
+              user={<UserTile user={currentUser} />}
+            />
+          </Route>
+          <Route exact path='/prompts/:promptId'>
+            <FullPage
+              page={<PromptShowContainer user={currentUser} />}
+              user={<UserTile user={currentUser} />}
+            />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </div>
   )
 }
 
