@@ -27,7 +27,7 @@
         background-color: rgb(0, 157, 255);
     }
     .response-section {
-        font-size: 12px;
+        font-size: 16px;
         margin: 3px;
         padding-left: 8px;
         padding-right: 8px;
@@ -36,6 +36,7 @@
         color: rgb(255, 255, 255);
     }
     p {
+        padding-top: 3px;
         font-size: 16px;
         padding-left: 18px;
     }
@@ -60,7 +61,51 @@
     border-color: rgb(183, 0, 0);
     border-radius: 3px;
     background-color: rgb(212, 120, 135);
-    color: rgb(183, 0, 0);
+    color: rgb(64, 50, 50);
+    max-width: max-content;
+    padding: 5px;
+}
+
+.edit-delete-buttons {
+    display: flex;
+}
+
+.response-edit-button {
+    font-size: 15px;
+    margin: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    max-width: min-content;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 157, 255);
+}
+
+.response-delete-button {
+    font-size: 15px;
+    margin: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    max-width: min-content;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(183, 0, 0);
+}
+
+.response-button:hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 6px 2px rgb(128, 127, 127);
+    transition: box-shadow 0.1s ease-in-out;
+}
+
+.login-message {
+    margin-left: 20px;
+    margin-top: 10px;
+    border-style: solid;
+    border-color: rgba(64, 64, 64, 0.711);
+    border-radius: 3px;
+    background-color: rgba(15, 189, 47, 0.582);
+    color: rgb(64, 50, 50);
     max-width: max-content;
     padding: 5px;
 }
