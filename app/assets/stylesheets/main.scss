@@ -36,6 +36,36 @@
     font-size: 20px;
 }
 
+.devise-button:hover {
+    box-shadow: 0px 0px 6px 2px rgb(255, 255, 255);
+    transition: box-shadow 0.1s ease-in-out;
+}
+.devise-button {
+    background-color: rgb(0, 157, 255);
+    border-style: solid;
+    border-color: rgb(231, 229, 229);
+    border-width: 1.5px;
+    border-radius: 15px;
+    width: 5rem;
+    font-size: 15px;
+    font-style: bold;
+    padding-right: 3px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.up {
+    background-color: rgb(15, 189, 47);
+}
+
+.in {
+    background-color: rgb(16, 46, 182);
+}
+
+.out {
+    background-color: rgb(140, 19, 221);
+}
+
 .card-divider {
     color: rgb(255, 255, 255);
     background-color: rgb(0, 157, 255);

@@ -16,15 +16,15 @@ const UserTile = (props) => {
                 <h1 className="user-tile-username">
                     @{user.username}
                 </h1>
-                <p className="user-button" onClick={signOut}>
-                    Sign Out
-                </p>
             </div>
         )
     } else {
         return (
-            <div className="user-tile">
-                <h1>
+            <div className="user-tile cell medium-12">
+                <div className="user-profile-pic">
+                    <img src={"https://works-in-progress-production.s3.amazonaws.com/uploads/Untitled+design.png"} />
+                </div>
+                <h1 className="user-tile-username">
                     Not Signed In
                 </h1>
             </div>

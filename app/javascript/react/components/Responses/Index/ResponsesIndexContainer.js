@@ -22,8 +22,8 @@ const ResponsesIndexContainer = (props) => {
         let deleteResponseButton = ""
         if (props.user) {
             response.user = props.user
-            editResponseButton = <div className="response-button" onClick={editClick}>Edit</div>
-            deleteResponseButton = <div className="response-button" onClick={deleteClick}>Delete</div>
+            editResponseButton = <div className="response-edit-button response-button" onClick={editClick}>Edit</div>
+            deleteResponseButton = <div className="response-delete-button response-button" onClick={deleteClick}>Delete</div>
         }
         return (
             <ResponseIndexTile
