@@ -2,7 +2,38 @@
     a {
         color: rgb(255, 255, 255);
     }
+    img {
+        width: 185px;
+        height: auto;
+    }
     background-color: rgb(0, 157, 255);
+    ul {
+        margin-right: 20px;
+    }
+    li {
+        background-color:rgb(0, 157, 255);
+    }
+}
+
+.homepage {
+    text-align: center;
+    img {
+        width: 70%;
+        height: auto;
+    }
+}
+
+.button:hover {
+    box-shadow: 0px 0px 6px 2px rgb(255, 255, 255);
+    transition: box-shadow 0.1s ease-in-out;
+}
+
+.button {
+    background-color: rgb(0, 157, 255);
+    border-color: rgb(255, 255, 255);
+    width: 20rem;
+    text-align: center;
+    font-size: 20px;
 }
 
 .card-divider {
